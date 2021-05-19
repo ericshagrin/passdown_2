@@ -1,0 +1,2 @@
+class InterestedBuyer < ApplicationRecord
+end
