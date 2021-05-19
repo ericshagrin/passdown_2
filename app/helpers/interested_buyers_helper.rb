@@ -1,0 +1,2 @@
+module InterestedBuyersHelper
+end
