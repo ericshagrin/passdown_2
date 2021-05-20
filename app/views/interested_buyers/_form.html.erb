@@ -1,0 +1,37 @@
+<%= form_with(model: interested_buyer) do |form| %>
+  <% if interested_buyer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(interested_buyer.errors.count, "error") %> prohibited this interested_buyer from being saved:</h2>
+
+      <ul>
+        <% interested_buyer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :apartment_id %>
+    <%= form.number_field :apartment_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
