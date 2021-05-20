@@ -53,9 +53,23 @@ task sample_data: :environment do
 
   apartments.each do |apartment|
     photo = Photo.create(
-      photo: ,
+      picture: "/#{rand(1..10)}.jpeg",
       apartment_id: apartment.id
     )
+
+    p photo.errors.full_messages
+
+
+    rand(0..8).times do 
+      interested_buyer = InterestedBuyer.create(
+        email: "#{Faker::Name}@example.com",
+        name: Faker::Name
+        phone_number: rand(100000000..999999999),
+        apartment_id: apartment.id
+      )
+    end
   end 
+
+  
 
 end

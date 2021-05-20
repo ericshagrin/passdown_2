@@ -12,3 +12,5 @@
 #
 class InterestedBuyer < ApplicationRecord
 end
+
+

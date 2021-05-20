@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "apartments#index"
-  get ":about" => "misc#about", as: :about
+  get "/about" => "misc#about", as: :about
 
 
   resources :interested_buyers
