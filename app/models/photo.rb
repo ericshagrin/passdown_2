@@ -9,4 +9,8 @@
 #  apartment_id :integer
 #
 class Photo < ApplicationRecord
+  belongs_to :apt, class_name: "Apartment", counter_cache: true
+
+  validates :picture, presence: true
+  validates :apt_id, presence: true
 end

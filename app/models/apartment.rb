@@ -14,6 +14,19 @@
 #  user_id       :integer
 #
 class Apartment < ApplicationRecord
+  belongs_to :user
+  has_many  :photos, foreign_key: "apt_id", dependent: :destroy
+  has_many  :interested_buyers, foreign_key: "apt_id", dependent: :destroy
+
+
+  validates :price, numericality: { greater_than: 1 }
+  validates :price, presence: true
+  validates :num_bdrms, presence: true
+  validates :num_bath, numericality: { greater_than: 0 }
+  validates :num_bath, presence: true
+  validates :furniture_amt, presence: true
+  validates :description, presence: true
+  validates :address, presence: true
 end
 
 

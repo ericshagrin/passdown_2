@@ -11,6 +11,11 @@
 #  apartment_id :integer
 #
 class InterestedBuyer < ApplicationRecord
+  belongs_to :apt, class_name: "Apartment", counter_cache: true
+  
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :apt_id, presence: true
 end
 
 
