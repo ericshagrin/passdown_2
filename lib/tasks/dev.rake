@@ -1,7 +1,5 @@
 desc "Fill the database tables with some sample data"
 task sample_data: :environment do
-  require 'faker'
-
   starting = Time.now
 
   User.delete_all
@@ -63,8 +61,8 @@ task sample_data: :environment do
     rand(0..8).times do 
       interested_buyer = InterestedBuyer.create(
         email: "#{Faker::Name}@example.com",
-        name: Faker::Name
-        phone_number: rand(100000000..999999999),
+        name: Faker::Name,
+        phone_number: rand(100000000..999999999).to_s,
         apartment_id: apartment.id
       )
     end
