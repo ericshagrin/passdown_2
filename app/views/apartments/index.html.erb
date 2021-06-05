@@ -2,38 +2,22 @@
 
 <h1>Apartments</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Price</th>
-      <th>Address</th>
-      <th>Num bath</th>
-      <th>Num bdrms</th>
-      <th>Furniture amt</th>
-      <th>Description</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @apartments.each do |apartment| %>
 
-  <tbody>
-    <% @apartments.each do |apartment| %>
-      <tr>
-        <td><%= apartment.price %></td>
-        <td><%= apartment.address %></td>
-        <td><%= apartment.num_bath %></td>
-        <td><%= apartment.num_bdrms %></td>
-        <td><%= apartment.furniture_amt %></td>
-        <td><%= apartment.description %></td>
-        <td><%= apartment.user_id %></td>
-        <td><%= link_to 'Show', apartment %></td>
-        <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
-        <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="card" style="width: 50%;">
+    <div class="card-body">
+      <h5 class="card-title"><%= apartment.address %> </h5>
+      <p class="card-text"><%=apartment.description %></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"> Bedrooms: <%= apartment.num_bdrms %> | Bathrooms: <%= apartment.num_bath %></li>
+      <li class="list-group-item">Furniture: <%= apartment.furniture_amt %></li>
+      <li class="list-group-item">Price: <%= apartment.price %></li>
+    </ul>
+    <div class="card-body">
+      Contact: <%= User.where(id: apartment.user_id).first.email%>
+    </div>
+  </div>
+<% end %>
 
-<br>
 
-<%= link_to 'New Apartment', new_apartment_path %>

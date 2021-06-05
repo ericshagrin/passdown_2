@@ -3,8 +3,6 @@ task sample_data: :environment do
   starting = Time.now
 
   User.delete_all
-  InterestedBuyer.delete_all
-  Photo.delete_all
   Apartment.delete_all
 
   people = Array.new(10) do
@@ -46,28 +44,6 @@ task sample_data: :environment do
 
     p user.errors.full_messages
   end
-
-  apartments = Apartment.all
-
-  apartments.each do |apartment|
-    photo = Photo.create(
-      picture: "/#{rand(1..10)}.jpeg",
-      apartment_id: apartment.id
-    )
-
-    p photo.errors.full_messages
-
-
-    rand(0..8).times do 
-      interested_buyer = InterestedBuyer.create(
-        email: "#{Faker::Name}@example.com",
-        name: Faker::Name,
-        phone_number: rand(100000000..999999999).to_s,
-        apartment_id: apartment.id
-      )
-    end
-  end 
-
   
 
 end
