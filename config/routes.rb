@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   get "/about" => "misc#about", as: :about
 
 
-  resources :interested_buyers
-  resources :photos
   resources :apartments
   devise_for :users
 
