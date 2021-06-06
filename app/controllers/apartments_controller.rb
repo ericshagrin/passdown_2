@@ -3,25 +3,23 @@ class ApartmentsController < ApplicationController
 
   # GET /apartments or /apartments.json
   def index
+    skip_authorization
     @apartments = Apartment.all
-
-    authorize @index
   end
 
   # GET /apartments/1 or /apartments/1.json
   def show
-    authorize @photo
   end
 
   # GET /apartments/new
   def new
-    authorize @new
     @apartment = Apartment.new
+    authorize @apartment
   end
 
   # GET /apartments/1/edit
   def edit
-    authorize @edit
+    authorize @apartment
   end
 
   # POST /apartments or /apartments.json

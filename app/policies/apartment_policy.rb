@@ -6,11 +6,6 @@ class ApartmentPolicy
     @apartment = apartment
   end
 
-    def initialize(user, record)
-    @user = user
-    @record = record
-  end
-
   def index?
     true
   end
@@ -28,7 +23,7 @@ class ApartmentPolicy
   end
 
   def update?
-    @current_user == @apartment.user_id
+    @current_user == apartment.user_id
   end
 
   def edit?
