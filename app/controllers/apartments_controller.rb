@@ -4,23 +4,30 @@ class ApartmentsController < ApplicationController
   # GET /apartments or /apartments.json
   def index
     @apartments = Apartment.all
+
+    authorize @index
   end
 
   # GET /apartments/1 or /apartments/1.json
   def show
+    authorize @photo
   end
 
   # GET /apartments/new
   def new
+    authorize @new
     @apartment = Apartment.new
   end
 
   # GET /apartments/1/edit
   def edit
+    authorize @edit
   end
 
   # POST /apartments or /apartments.json
   def create
+    authorize @create
+
     @apartment = Apartment.new(apartment_params)
 
     respond_to do |format|
@@ -36,6 +43,8 @@ class ApartmentsController < ApplicationController
 
   # PATCH/PUT /apartments/1 or /apartments/1.json
   def update
+    authorize @update
+
     respond_to do |format|
       if @apartment.update(apartment_params)
         format.html { redirect_to @apartment, notice: "Apartment was successfully updated." }
@@ -49,6 +58,8 @@ class ApartmentsController < ApplicationController
 
   # DELETE /apartments/1 or /apartments/1.json
   def destroy
+    authorize @destroy
+
     @apartment.destroy
     respond_to do |format|
       format.html { redirect_to apartments_url, notice: "Apartment was successfully destroyed." }
