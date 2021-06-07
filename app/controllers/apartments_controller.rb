@@ -24,13 +24,12 @@ class ApartmentsController < ApplicationController
 
   # POST /apartments or /apartments.json
   def create
-    authorize @create
-
     @apartment = Apartment.new(apartment_params)
+    authorize @apartment
 
     respond_to do |format|
       if @apartment.save
-        format.html { redirect_to @apartment, notice: "Apartment was successfully created." }
+        format.html { redirect_to :root, notice: "Apartment was successfully created." }
         format.json { render :show, status: :created, location: @apartment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,7 +55,7 @@ class ApartmentsController < ApplicationController
 
   # DELETE /apartments/1 or /apartments/1.json
   def destroy
-    authorize @destroy
+    authorize @apartment
 
     @apartment.destroy
     respond_to do |format|

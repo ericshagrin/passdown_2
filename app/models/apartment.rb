@@ -15,9 +15,6 @@
 #
 class Apartment < ApplicationRecord
   belongs_to :user
-  has_many  :photos, foreign_key: "apt_id", dependent: :destroy
-  has_many  :interested_buyers, foreign_key: "apt_id", dependent: :destroy
-
 
   validates :price, numericality: { greater_than: 1 }
   validates :price, presence: true

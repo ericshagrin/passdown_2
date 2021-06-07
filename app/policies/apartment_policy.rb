@@ -6,24 +6,16 @@ class ApartmentPolicy
     @apartment = apartment
   end
 
-  def index?
-    true
-  end
-
-  def show?
-    true
-  end
-
   def create?
-    @current_user 
+    new? 
   end
 
   def new?
-    @current_user
+    user
   end
 
   def update?
-    @current_user == apartment.user_id
+    user.id == apartment.user_id
   end
 
   def edit?

@@ -14,11 +14,24 @@
       <li class="list-group-item"> Bedrooms: <%= apartment.num_bdrms %> | Bathrooms: <%= apartment.num_bath %></li>
       <li class="list-group-item">Furniture: <%= apartment.furniture_amt %></li>
       <li class="list-group-item">Price: $<%= apartment.price %></li>
+      
+
+      <% if policy(apartment).edit? %>
+        <li class="list-group-item p-3 mb-2"><%= link_to 'Edit', edit_apartment_path(apartment.id) %></li>
+      <% end %> 
+
+      <% if policy(apartment).destroy? %>
+        <li class="list-group-item p-3 mb-2"><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <% end %> 
     </ul>
+
     <div class="card-body p-3 mb-2 bg-primary text-white">
       Contact: <%= User.where(id: apartment.user_id).first.email%>
     </div>
+
+    
   </div>
 <% end %>
+
 
 
