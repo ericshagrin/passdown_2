@@ -40,11 +40,11 @@ class ApartmentsController < ApplicationController
 
   # PATCH/PUT /apartments/1 or /apartments/1.json
   def update
-    authorize @update
+    authorize @apartment
 
     respond_to do |format|
       if @apartment.update(apartment_params)
-        format.html { redirect_to @apartment, notice: "Apartment was successfully updated." }
+        format.html { redirect_to apartment_path, notice: "Apartment was successfully updated." }
         format.json { render :show, status: :ok, location: @apartment }
       else
         format.html { render :edit, status: :unprocessable_entity }

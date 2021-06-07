@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_18_163455) do
+ActiveRecord::Schema.define(version: 2021_05_18_161635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -24,22 +24,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_163455) do
     t.string "furniture_amt"
     t.text "description"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "interested_buyers", force: :cascade do |t|
-    t.integer "apartment_id"
-    t.string "email"
-    t.string "name"
-    t.string "phone_number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.integer "apartment_id"
-    t.string "picture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
