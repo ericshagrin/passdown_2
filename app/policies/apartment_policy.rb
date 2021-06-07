@@ -15,7 +15,11 @@ class ApartmentPolicy
   end
 
   def update?
-    user.id == apartment.user_id
+    if user
+      user.id == apartment.user_id
+    else 
+      false
+    end 
   end
 
   def edit?

@@ -24,6 +24,7 @@ class Apartment < ApplicationRecord
   validates :furniture_amt, presence: true
   validates :description, presence: true
   validates :address, presence: true
+  validates :user_id, presence: true
 end
 
 

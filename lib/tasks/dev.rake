@@ -33,17 +33,15 @@ task sample_data: :environment do
 
   users.each do |user|
     apartment = Apartment.create(
-      address: Faker::Address,
-      description: Faker::Quote,
+      address: Faker::Address.street_address,
+      description: Faker::Quote.famous_last_words,
       furniture_amt: furntiture_amt.sample,
-      num_bath: rand(1..5),
-      num_bdrms: rand(1..5),
+      num_bath: rand(1..6),
+      num_bdrms: rand(1..6),
       price: rand(1000..5000),
       user_id: user.id 
     )
 
     p user.errors.full_messages
   end
-  
-
 end
