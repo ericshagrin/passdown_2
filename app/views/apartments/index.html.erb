@@ -5,7 +5,7 @@
 
 <% @apartments.each do |apartment| %>
 
-  <div class="mx-auto mt-5 card"  style="width: 60%">
+  <div class="mx-auto mt-5 card"  style="width: 60%" id="<%=dom_id(apartment)%>">
     <div class="card-body text-primary">
       <h5 class="text-center card-title"><%= apartment.address %> </h5>
       <p class="text-center card-text"><%=apartment.description %></p>
@@ -21,7 +21,11 @@
       <% end %> 
 
       <% if policy(apartment).destroy? %>
-        <li class="list-group-item p-3 mb-2"><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <li class="list-group-item p-3 mb-2">
+          <%= link_to apartment, method: :delete, remote: true do%>
+            <i class="fas fa-trash fa-fw"></i>
+          <%end%>
+        </li>
       <% end %> 
     </ul>
 

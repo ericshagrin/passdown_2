@@ -59,8 +59,14 @@ class ApartmentsController < ApplicationController
 
     @apartment.destroy
     respond_to do |format|
+      format.js do 
+        render template: "apartments/destroy.js.erb"
+      end
+      
       format.html { redirect_to apartments_url, notice: "Apartment was successfully destroyed." }
       format.json { head :no_content }
+
+
     end
   end
 
